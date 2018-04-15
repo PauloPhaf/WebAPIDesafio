@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "5b0d48f2-e465-4394-9009-b50147c7aad0",
+		"name": "Sonda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:60751/api/sonda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"planalto\": \"5 5\",\n\t\"entradas\": [\n\t\t{\n\t\t\t\"sonda\": \"1 2 N\",\n\t\t\t\"controle\": \"LMLMLMLMM\"\n\t\t},\n\t\t{\n\t\t\t\"sonda\": \"3 3 E\",\n\t\t\t\"controle\": \"MMRMMRMRRM\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:60751/api/sonda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "60751",
+					"path": [
+						"api",
+						"sonda"
+					]
+				},
+				"description": "Put"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:60751/api/sonda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Posicao_X\": 1,\n\t\"Posicao_Y\": 2,\n\t\"Direcao\":\"N\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:60751/api/sonda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "60751",
+					"path": [
+						"api",
+						"sonda"
+					]
+				},
+				"description": "GET"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:60751/api/sonda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"sondas\":[\r\n\t\t{\r\n\t\t\t\"Posicao_X\": 1,\r\n\t\t\t\"Posicao_Y\": 2,\r\n\t\t\t\"Direcao\":\"N\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"Posicao_X\": 3,\r\n\t\t\t\"Posicao_Y\": 3,\r\n\t\t\t\"Direcao\":\"E\"\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:60751/api/sonda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "60751",
+					"path": [
+						"api",
+						"sonda"
+					]
+				},
+				"description": "POST"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:60751/api/sonda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Posicao_X\": 1,\n\t\"Posicao_Y\": 2,\n\t\"Direcao\":\"N\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:60751/api/sonda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "60751",
+					"path": [
+						"api",
+						"sonda"
+					]
+				},
+				"description": "DELETE"
+			},
+			"response": []
+		}
+	]
+}
