@@ -38,27 +38,31 @@ namespace WebAPIProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]SondasModel pSondas)
+        public IActionResult Post([FromBody]JToken pSondas)
         {
+            SondasModel lSondaModel = JsonConvert.DeserializeObject<SondasModel>(pSondas.ToString());
+            
             var sondasDB = _dataBase.GetCollection<SondaModel>("SondaModel");
 
             List<dynamic> lSondas = new List<dynamic>();
-            pSondas.sondas.ForEach(x => sondasDB.InsertOne(x));
+            lSondaModel.sondas.ForEach(x => sondasDB.InsertOne(x));
 
             return Ok(lSondas);
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody]EntradasModel pEntradas)
+        public IActionResult Put([FromBody]JToken pEntradas)
         {
-            var lCoordenadaPlanalto = !String.IsNullOrEmpty(pEntradas.planalto) ? pEntradas.planalto.Split(" ").Where(x => !String.IsNullOrEmpty(x)).ToArray() : null;
+            EntradasModel lEntradas = JsonConvert.DeserializeObject<EntradasModel>(pEntradas.ToString());
+
+            var lCoordenadaPlanalto = !String.IsNullOrEmpty(lEntradas.planalto) ? lEntradas.planalto.Split(" ").Where(x => !String.IsNullOrEmpty(x)).ToArray() : null;
 
             if (lCoordenadaPlanalto != null)
             {
                 List<dynamic> lSondas = new List<dynamic>();
                 int lXp = Convert.ToInt32(lCoordenadaPlanalto[0]); int lYp = Convert.ToInt32(lCoordenadaPlanalto[1]);
 
-                foreach (var lEntrada in pEntradas.entradas)
+                foreach (var lEntrada in lEntradas.entradas)
                 {
                     var lCoordenadaSonda = !String.IsNullOrEmpty(lEntrada.sonda) ? lEntrada.sonda.Split(" ").Where(x => !String.IsNullOrEmpty(x)).ToArray() : null;
                     var lControleSonda = !String.IsNullOrEmpty(lEntrada.controle) ? lEntrada.controle.Trim() : null;
